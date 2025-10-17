@@ -8,10 +8,9 @@ export const sendDataLocal = async (proyecto, tiempo, intentos) => {
       body: JSON.stringify({ proyecto, tiempo, intentos }),
       headers: { "Content-Type": "application/json" },
     })
-    const data = await res.json()
-    console.log("✅ Datos enviados:", data.message)
+    console.log("✅ Local:", await res.text())
   } catch (err) {
-    console.error("❌ Error enviando datos:", err)
+    console.error("❌ Local:", err)
   }
 }
 
@@ -22,9 +21,17 @@ export const sendDataVercel = async (proyecto, tiempo, intentos) => {
       body: JSON.stringify({ proyecto, tiempo, intentos }),
       headers: { "Content-Type": "application/json" },
     })
-    const data = await res.json()
-    console.log(data.message)
+    console.log("✅ Vercel:", (await res.json()).message)
   } catch (err) {
-    console.error("Error enviando a Vercel endpoint:", err)
+    console.error("❌ Vercel:", err)
+  }
+}
+
+// Función automática según entorno
+export const sendData = async (proyecto, tiempo, intentos) => {
+  if (window.location.hostname === "localhost") {
+    await sendDataLocal(proyecto, tiempo, intentos)
+  } else {
+    await sendDataVercel(proyecto, tiempo, intentos)
   }
 }
