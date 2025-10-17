@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from './Components/Navbar'
-import Home from './screens/Home.jsx'
+import Home from './Screens/Home.jsx'
 import Proyecto1 from './pages/Proyecto1'
 import Proyecto2 from './pages/Proyecto2'
 import Proyecto2n2 from './pages/Proyecto2n2'
