@@ -1,0 +1,76 @@
+.Info {
+    padding: 40px;
+    background-color: #f9e8d6; 
+    color: #48505a;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+/* Título principal */
+.t1 {
+    color: #2e3640;
+    font-size: 3.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+/* Subtítulo */
+.sub1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #48505a;
+}
+
+.textoin{
+    font-size: 1.2em;
+    font-weight:lighter;
+    color: #48505a;
+}
+
+/* Cards de contenido */
+.card {
+    background-color: #ffffff; 
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px; 
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Listas dentro de cards */
+.card ul {
+    margin: 15px 0 0 20px;
+    padding: 0;
+    list-style-type: disc;
+}
+
+.card li {
+    margin-bottom: 10px;
+    color: #2e3640;
+}
+
+/* Span destacado dentro de card */
+.card span {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #f39c12;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Icono al lado del título */
+.icon {
+    color: #9ac5de;
+    font-size: 1.2em;
+}

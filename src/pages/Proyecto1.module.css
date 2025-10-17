@@ -1,0 +1,182 @@
+/* Contenedor principal */
+.container {
+  padding: 50px;
+  background: rgba(255,255,255,0.3);
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  min-height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Fondo */
+  .fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e0f7fa, #fff);
+    overflow: hidden;
+    z-index: -1; /* para que quede atrás */
+  }
+
+  .icono {
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgba(0, 0, 0, 0.2); /* se ven como fondo */
+    animation: flotar 6s infinite ease-in-out;
+  }
+
+  /* Ejemplo de posiciones distintas */
+  .icono:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+  .icono:nth-child(2) { top: 50%; left: 30%; animation-delay: 2s; }
+  .icono:nth-child(3) { top: 70%; left: 70%; animation-delay: 4s; }
+
+  /* Animación flotante */
+  @keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+
+/* Títulos */
+  .p1titulo {
+    font-size: 2.2rem;
+    color: #213f61;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .p1subtitulo {
+    font-size: 3.5rem;
+    color: #213f61;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Iconos en títulos */
+  .icon {
+    color: #213f61;
+  }
+
+/* Cards */
+  .card, .cardHighlight {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card {
+    background: #fff;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .cardHighlight {
+    background: #204b58;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .cardHighlight:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  }
+
+/* Textareas */
+.textarea {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Botones */
+  .button, .verifyButton {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+    background: #213f61;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 5px;
+  }
+
+  .button:hover, .verifyButton:hover {
+    background: #1a2f4d;
+    transform: translateY(-2px);
+  }
+
+/* Éxito y error */
+  .success, .error {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .success {
+    background: #d4edda;
+    color: #155724;
+    position: relative; /* para confeti */
+  }
+
+  .error {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+/* Listas */
+  .tiempos {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+
+  .tiempos li {
+    font-size: 1.1rem;
+    margin: 5px 0;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .tiempos li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #48505a;
+  }
+
+/* Confeti full screen */
+.react-confetti {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}

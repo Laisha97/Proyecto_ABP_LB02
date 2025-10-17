@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+.Navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a9bed6;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.Navbar ul,
+.NavOpen ul {
+    list-style: none;
+}
+
+.NavOpen {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #a9bed6;
+    flex-direction: column;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.NavLink {
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #48505a;
+    padding-top: 90px;
+    gap: 8px;
+    text-decoration: none;
+
+}
+
+.NavLink:hover{
+    cursor: pointer;
+}
+
+/*.icon{
+    display: flex;
+    align-items: center;
+    font-size: 0.7em;
+}*/
+
+/*
+.border {
+    display: block;
+    height: 1.5px;         
+    width: 150px;            
+    background-color: rgb(88, 2, 2);
+    margin: 3px 0;           
+    border-radius: 1px;       
+    transform: scaleX(0);    
+    transform-origin: left;   
+    animation: drawLine 0.5s forwards; 
+}
+*/
+
+
+@keyframes drawLine {
+  to { transform: scaleX(1); }
+}
+
+.logo{
+    display: flex;
+    color: #48505a;
+    font-weight: 700;
+    margin-left: 60px;
+    text-decoration: none;
+}
+
+@media (min-width: 800px){
+    .logo{
+    font-size: 1.2em;
+}
+    .Navbar{
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50px;
+}
+    .linksContainer {
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+}
+    .NavLink{
+        font-weight: 700;
+        padding-top: 4px;
+        font-size: 1.2em;
+    }
+
+    .NavLink:hover{
+    font-size: 1.5em;
+}
+.NavOnScroll{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: bisque;
+    list-style: none;
+}
+}
+
+.NavOnScroll{
+   display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #a9bed6;
+    list-style: none;
+}
