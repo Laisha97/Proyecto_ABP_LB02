@@ -1,12 +1,12 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom"
 import Navbar from './Components/Navbar'
 import Home from './Screens/Home.jsx'
-import Proyecto1 from './pages/Proyecto1'
-import Proyecto2 from './pages/Proyecto2'
-import Proyecto2n2 from './pages/Proyecto2n2'
-import Proyecto1n2 from './pages/Proyecto1n2'
+import Proyecto1 from './pages/Proyecto1.jsx'
+import Proyecto2 from './pages/Proyecto2.jsx'
+import Proyecto2n2 from './pages/Proyecto2n2.jsx'
+import Proyecto1n2 from './pages/Proyecto1n2.jsx'
 import Info from './Screens/Info.jsx'
-import Beneficios from'./Screens/Beneficios.js'
+import Beneficios from'./Screens/Beneficios.jsx'
 import { useEffect } from "react"
 
 function ScrollToSection() {
