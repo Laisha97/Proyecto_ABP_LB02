@@ -308,5 +308,7 @@
 /*----------- Nombre ----------*/
 .nombre{
   color: #5f5f60;
+  background-color: #f4b183;
+  font-size: small;
 }
 
