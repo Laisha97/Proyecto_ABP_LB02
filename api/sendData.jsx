@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: req.body, // pasamos los datos directamente
+      body: req.body, 
     });
 
     const data = await response.text()
