@@ -1,26 +1,25 @@
-.Home{
-    width:100%;
-    min-height: 100vh;
-    display:flex;
-    flex-direction: column;
-
-    /*padding: 50px 50px 200px;*/
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+/* ===================== Home.module.css ===================== */
+.Home {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.Home p{
-    color: #48505a;
+.Home p {
+  color: #48505a;
 }
 
-/* Primera sección */
+/* ------------------- Primera sección ------------------- */
 .section1 {
   width: 100%;
-    background-color: #a9bed6;
+  background-color: #a9bed6;
   display: flex;
   justify-content: center;
-  padding: 30px 0;
+  padding: 20px 0;
 }
 
 .abpSection {
@@ -28,7 +27,7 @@
   max-width: 1000px;
   width: 90%;
   align-items: center;
-  gap: 150px;
+  gap: 50px;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
@@ -37,7 +36,7 @@
   flex: 3;
   color: #ffffff;
   font-size: 1.2em;
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -45,9 +44,9 @@
 }
 
 .abpbooks {
-  flex: 0.5;
+  flex: 1;
   display: flex;
-  justify-content: column;
+  justify-content: center;
 }
 
 .abpbooks img {
@@ -55,30 +54,35 @@
   height: auto;
 }
 
+.textoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
 .texto-abp {
   max-width: 900px;
-  margin: 10px auto;
-  line-height: 1.6;
+  line-height: 1.5;
   font-size: 1.1em;
   text-align: justify;
-  /*background: #f4b183; */   
-  padding: 50px 30px;
+  margin: 20px auto;
+  padding: 30px 20px;
   border-radius: 15px;
- 
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
-    position: relative;
-    z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
 }
 
 .mini {
-  font-weight:50px;
   font-size: smaller;
-    font-style:italic;
+  font-style: italic;
   color: #48505a;
 }
-.resaltado {
+
+.resaltado,
+.activo,
+.protagonista {
   font-weight: bold;
   color: #48505a;
 }
@@ -88,44 +92,9 @@
   color: #48505a;
 }
 
-.activo {
-  font-weight: bold;
-  color: #48505a;
-}
-
-.protagonista {
-  font-weight: bold;
-  color: #48505a;
-}
-
-.textoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.texto-abp {
-  max-width: 900px;
-  line-height: 1.6;
-  font-size: 1.1em;
-  text-align: justify;
-  margin: 0;
-  padding: 50px 30px;
-  border-radius: 15px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ------------------- Botón de información ------------------- */
 .info {
-  display:block;
+  display: block;
   margin: 8px auto 0 auto;
   padding: 10px 20px;
   background-color: #48505a;
@@ -134,17 +103,18 @@
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .info:hover {
   background-color: #2e3640;
 }
 
+/* ------------------- Frase en movimiento ------------------- */
 .sectionQuote {
   width: 100%;
-  min-height: 300px; 
-  background-color:#f2f3f4;
+  min-height: 200px;
+  background-color: #f2f3f4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,19 +127,19 @@
   font-weight: bold;
   color: #48505a;
   opacity: 0;
-  transform: translateY(20px); 
-  animation: fadeInUp 1s ease forwards; 
-  position: relative;       
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
 }
 
+/* ------------------- Segunda sección ------------------- */
 .section2 {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 50px 80px;
+  padding: 30px 40px;
   background-color: #f4b183;
-  gap: 40px;
+  gap: 30px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -177,54 +147,45 @@
 .textSide {
   display: flex;
   flex-direction: column;
-  max-width: 50%; 
+  max-width: 50%;
 }
 
 .segtitle {
-  font-size: 2.5em;
+  font-size: 2em;
   color: #48505a;
   margin-bottom: 20px;
 }
 
 .projectsDescription {
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: #48505a;
-
 }
 
+/* ------------------- Contenedor de proyectos ------------------- */
 .projectsContainer {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 15px;
   max-width: 45%;
   flex-wrap: wrap;
   justify-content: flex-start;
-  /*align-items: flex-start;*/
-  /*padding-left: 30px;*/
 }
 
-@media (max-width: 768px) {
-  .projectsContainer {
-    flex-direction: column;
-    max-width: 100%;
-  }
-}
-
+/* ------------------- Tarjetas de proyectos ------------------- */
 .projectCard {
-    background-color: #fdf6ec;
-    flex: 1 1 45%;
-    max-width: 250px;
+  background-color: #fdf6ec;
+  flex: 1 1 300px;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
   align-items: center;
-  transition: transform 0.3s ease box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease forwards;
-
 }
 
 .projectCard:hover {
@@ -233,8 +194,9 @@
 }
 
 .projectCard:hover .projectImage {
-    transform: scale(1.05); 
+  transform: scale(1.05);
 }
+
 .projectImageContainer {
   background-color: #4caf50;
   display: flex;
@@ -252,7 +214,7 @@
 
 .projectTextContainer {
   background-color: #fdf6ec;
-  padding: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,4 +241,66 @@
 
 .projectButton:hover {
   background-color: #48505a;
+}
+
+/* ------------------- Animaciones ------------------- */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------- Media queries para móviles ------------------- */
+@media (max-width: 768px) {
+  .abpSection {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .abpText {
+    text-align: center;
+  }
+
+  .abpbooks img {
+    width: 80%;
+  }
+
+  .texto-abp {
+    padding: 20px 15px;
+  }
+
+  .section1, .section2, .sectionQuote {
+    padding: 20px 10px;
+  }
+
+  .textSide {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .projectsContainer {
+    flex-direction: column;
+    max-width: 100%;
+    gap: 15px;
+  }
+
+  .projectCard {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .segtitle {
+    font-size: 1.8em;
+  }
+
+  .projectsDescription {
+    font-size: 1.1em;
+  }
+
+  .quoteText {
+    font-size: 1.5em;
+  }
 }
