@@ -82,7 +82,6 @@ const Proyecto1 = () => {
       sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
     }
 
-    // Mantener scroll al top
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }, [])
 

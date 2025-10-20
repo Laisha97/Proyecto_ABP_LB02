@@ -174,16 +174,24 @@ const Proyecto2n2 = () => {
     ]
 
     useEffect(() => {
-        const random = Math.floor(Math.random() * problemasNivel2.length)
-        setProblema(problemasNivel2[random])
+        const storedProblema = sessionStorage.getItem("problemaNivel1")
+        if (storedProblema) {
+            setProblema(JSON.parse(storedProblema))
+        } else {
+            const random = Math.floor(Math.random() * problemasNivel1.length)
+            const selected = problemasNivel1[random]
+            setProblema(selected)
+            sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+        }
+
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
 
-        // Ciclo de semáforo
         const interval = setInterval(() => {
-            setTiempo(prev => (prev + 1) % 60) // ciclo de 60 seg
+            setTiempo(prev => (prev + 1) % 60); // ciclo de 60 seg
         }, 1000)
+
         return () => clearInterval(interval)
-    }, [location.pathname])
+    }, [])
 
     // Estado de semáforos según el tiempo
     const principalColor = () => {

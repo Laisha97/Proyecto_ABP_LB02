@@ -76,11 +76,18 @@ const Proyecto1n2 = () => {
   ]
 
   useEffect(() => {
-    // Elegir problema aleatorio al cargar
-    const random = Math.floor(Math.random() * problemasNivel2.length)
-    setProblema(problemasNivel2[random])
+    const storedProblema = sessionStorage.getItem("problemaNivel1")
+    if (storedProblema) {
+      setProblema(JSON.parse(storedProblema))
+    } else {
+      const random = Math.floor(Math.random() * problemasNivel1.length)
+      const selected = problemasNivel1[random]
+      setProblema(selected)
+      sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-  }, [location.pathname])
+  }, [])
 
   const separar = (input) =>
     input.split(/\n|,/).map((s) => s.trim()).filter(Boolean)

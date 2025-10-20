@@ -130,17 +130,26 @@ const Proyecto2 = () => {
     { key: "z2", label: "rojo SS", color: "red" },
   ]
 
-  useEffect(() => {
+useEffect(() => {
+  const storedProblema = sessionStorage.getItem("problemaNivel1")
+  if (storedProblema) {
+    setProblema(JSON.parse(storedProblema))
+  } else {
     const random = Math.floor(Math.random() * problemasNivel1.length)
-    setProblema(problemasNivel1[random])
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+    const selected = problemasNivel1[random]
+    setProblema(selected)
+    sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+  }
 
-    // Ciclo de semáforo
-    const interval = setInterval(() => {
-      setTiempo(prev => (prev + 1) % 60) // ciclo de 60 seg
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [location.pathname])
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+
+  const interval = setInterval(() => {
+    setTiempo(prev => (prev + 1) % 60); // ciclo de 60 seg
+  }, 1000)
+
+  return () => clearInterval(interval)
+}, [])
+
 
   // Estado de semáforos según el tiempo
   const principalColor = () => {
