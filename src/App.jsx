@@ -1,50 +1,10 @@
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom"
-import Navbar from './Components/Navbar'
-import Home from './Screens/Home.jsx'
-import Proyecto1 from './pages/Proyecto1.jsx'
-import Proyecto2 from './pages/Proyecto2.jsx'
-import Proyecto2n2 from './pages/Proyecto2n2.jsx'
-import Proyecto1n2 from './pages/Proyecto1n2.jsx'
-import Info from './Screens/Info.jsx'
-import Beneficios from'./Screens/Beneficios.jsx'
-import { useEffect } from "react"
-
-function ScrollToSection() {
-  const location = useLocation()
-
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace("#", "") // ejemplo: #projects → "projects"
-      const element = document.getElementById(id)
-      if (element) {
-        setTimeout(() => {
-        element.scrollIntoView({ behavior: "smooth" })
-      }, 800)
-     }
-    }
-  }, [location]);
-
-  return null;
-}
+import { HashRouter as Router } from "react-router-dom"
+import AppRoutes from "./AppRoutes"
 
 function App() {
-  const location = useLocation()
-  const showNavbar = location.pathname !== '/'
-
   return (
     <Router>
-      {showNavbar && <Navbar />}
-      <ScrollToSection />
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/proyecto1" element={<Proyecto1 key={window.location.pathname + Date.now()} />} />
-        <Route path="/proyecto2" element={<Proyecto2 key={window.location.pathname + Date.now()} />} />
-        <Route path="/proyecto1n2" element={<Proyecto1n2 key={window.location.pathname + Date.now()} />} />
-        <Route path="/proyecto2n2" element={<Proyecto2n2 key={window.location.pathname + Date.now()} />} />
-        <Route path="/Info" element={<Info/>} />
-        <Route path="/Beneficios" element={<Beneficios/>} />
-      </Routes>
+      <AppRoutes />
     </Router>
   )
 }
