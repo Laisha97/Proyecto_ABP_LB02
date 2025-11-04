@@ -28,12 +28,16 @@ function ScrollToSection() {
 }
 
 function App() {
+  const location = useLocation()
+  const showNavbar = location.pathname !== '/'
+
   return (
     <Router>
-      <Navbar /> 
+      {showNavbar && <Navbar />}
       <ScrollToSection />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Inicio />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/proyecto1" element={<Proyecto1 key={window.location.pathname + Date.now()} />} />
         <Route path="/proyecto2" element={<Proyecto2 key={window.location.pathname + Date.now()} />} />
         <Route path="/proyecto1n2" element={<Proyecto1n2 key={window.location.pathname + Date.now()} />} />

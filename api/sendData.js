@@ -4,16 +4,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { proyecto, tiempo, intentos } = req.body;
+    const { proyecto, tiempo, intentos, matricula } = req.body;
 
-    // ⚠️ Aquí pones tu URL del Google Script correcto (el que termina en /exec)
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYIL_v5aV63F31RFthb47PgnoMHgOlnzrvbAknSWK5wqMqEhCBn5lUVaWCRKdIQef2/exec";
 
-    // Se envían los datos al Google Apps Script
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ proyecto, tiempo, intentos }),
+      body: JSON.stringify({ proyecto, tiempo, intentos, matricula }),
     });
 
     const text = await response.text();
