@@ -19,13 +19,13 @@ const Navbar = () => {
     if (window.innerWidth > 800) setNavbarOpen(false)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, []);
+  }, [])
 
   const links = [
     { id: 1, link: 'Inicio', to: 'home' },
     { id: 2, link: 'Proyectos', to: 'projects' },
     { id: 3, link: 'Beneficios', to: 'beneficios' }, // cambiar 'benefits' a 'beneficios' si tu ruta es /beneficios
-  ];
+  ]
 
   return (
     <div
@@ -90,6 +90,20 @@ const Navbar = () => {
               <div className={styles.border}></div>
             </li>
           ))}
+<li>
+    <RouterLink
+      to="/"
+      className={styles.NavLink}
+      onClick={() => {
+        localStorage.removeItem("matricula")
+        setNavbarOpen(false)
+      }}
+    >
+      Cerrar sesión
+    </RouterLink>
+    <div className={styles.border}></div>
+  </li>
+
         </ul>
       )}
     </div>

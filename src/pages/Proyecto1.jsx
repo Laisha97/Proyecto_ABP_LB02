@@ -106,34 +106,39 @@ const Proyecto1 = () => {
     }
   }
 
-  const validarValores = () => {
-    try {
-      const lines = separar(valoresTexto)
-      const valoresUsuario = {}
-      lines.forEach((line) => {
-        if (line.includes("=")) {
-          const [varName, val] = line.split("=").map((s) => s.trim())
-          valoresUsuario[varName] = Number(val)
-        }
-      })
+const validarValores = () => {
+  try {
+    const lines = separar(valoresTexto)
+    const valoresUsuario = {}
+    lines.forEach((line) => {
+      if (line.includes("=")) {
+        const [varName, val] = line.split("=").map((s) => s.trim())
+        valoresUsuario[varName] = Number(val)
+      }
+    })
 
-      const { x, y, z } = valoresUsuario
+    const { x, y, z } = valoresUsuario
+    const esCorrecto = problema && problema.validacion({ x, y, z })
+    setResultado(esCorrecto ? "correcto" : "incorrecto")
 
-      const esCorrecto = problema && problema.validacion({ x, y, z })
-      setResultado(esCorrecto ? "correcto" : "incorrecto")
+    const nuevoIntento = intentos + 1
+    setIntentos(nuevoIntento)
 
-      const nuevoIntento = intentos + 1
-      setIntentos(nuevoIntento)
+    const matricula = localStorage.getItem("matricula")
+    sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
 
-      sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento)
+  } catch (err) {
+    console.error(err)
+    setResultado("incorrecto")
 
-    } catch (err) {
-      console.error(err)
-      setResultado("incorrecto")
+    const nuevoIntento = intentos + 1
+    setIntentos(nuevoIntento)
 
-      sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento)
-    }
+    const matricula = localStorage.getItem("matricula")
+    sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
   }
+}
+
 
   return (
     <div>
