@@ -11,10 +11,17 @@ import { useLocation } from "react-router-dom"
 
 const problemasNivel2 = [
   {
-    enunciado: `En tu casa, la laptop recibe 10 Mbps más que el doble del celular.
-    La tablet recibe 5 Mbps menos que la mitad de la TV.
-    La suma del celular y la TV es igual a la suma de la laptop y la tablet.
-    Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 200 Mbps?`,
+    enunciado: (
+      <>
+        <p>En tu casa, la laptop recibe 10 Mbps más que el doble del celular.
+          La tablet recibe 5 Mbps menos que la mitad de la TV.
+          La suma del celular y la TV es igual a la suma de la laptop y la tablet.
+        </p>
+        <p>
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 200 Mbps?`,
+        </p>
+      </>
+    ),
     validacion: ({ x, y, z, w }) =>
       Math.abs(x - (2 * y + 10)) <= 0.5 &&
       Math.abs(w - (z / 2 - 5)) <= 0.5 &&
@@ -22,11 +29,18 @@ const problemasNivel2 = [
       Math.abs(x + y + z + w - 200) <= 0.5
   },
   {
-    enunciado: `En tu casa hay una laptop, una TV, un celular y una tablet.
-    La laptop y la tablet juntos consumen 30 Mbps más que la TV y el celular.
-    La laptop recibe 5 Mbps más que el celular.
-    La tablet recibe la mitad del consumo de la laptop.
-    Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 180 Mbps?`,
+    enunciado: (
+      <>
+        <p>En tu casa hay una laptop, una TV, un celular y una tablet.
+          La laptop y la tablet juntos consumen 30 Mbps más que la TV y el celular.
+          La laptop recibe 5 Mbps más que el celular.
+          La tablet recibe la mitad del consumo de la laptop.
+        </p>
+        <p>
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 180 Mbps?`,
+        </p>
+      </>
+    ),
     validacion: ({ x, y, z, w }) =>
       Math.abs((x + w) - (z + y + 30)) <= 0.5 &&
       Math.abs(x - (y + 5)) <= 0.5 &&
@@ -34,10 +48,17 @@ const problemasNivel2 = [
       Math.abs(x + y + z + w - 180) <= 0.5
   },
   {
-    enunciado: `En tu casa la TV recibe el doble de lo que recibe el celular.
-    La laptop recibe 20 Mbps menos que la suma del tablet y el celular.
-    El tablet recibe 10 Mbps más que la mitad del celular.
-   Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 220 Mbps?`,
+    enunciado: (
+      <>
+        <p>En tu casa la TV recibe el doble de lo que recibe el celular.
+          La laptop recibe 20 Mbps menos que la suma del tablet y el celular.
+          El tablet recibe 10 Mbps más que la mitad del celular.
+        </p>
+        <p>
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 220 Mbps?`,
+        </p>
+      </>
+    ),
     validacion: ({ x, y, z, w }) =>
       Math.abs(z - 2 * y) <= 0.5 &&
       Math.abs(x - (w + y - 20)) <= 0.5 &&
