@@ -33,7 +33,7 @@ const Home = () => {
               <p className={styles['texto-abp']}>
                 <span className={styles.mini}>Educación digital</span>
                 <br></br>
-                <span className={styles.resaltado}>Aprendizaje Basado en Proyectos (ABP)</span> <br></br>
+                <span className={styles.resaltado}>Aprendizaje Basado en Proyectos (ABPy)</span> <br></br>
                 <br></br>
                 <span className={styles.Es}>Es una metodología educativa donde los estudiantes</span>
                 <span className={styles.activo}> aprenden de manera activa</span> al planear, desarrollar y evaluar proyectos con aplicación en la vida real.

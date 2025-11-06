@@ -1,4 +1,4 @@
-export const sendData = async (proyecto, tiempo, intentos) => {
+export const sendData = async (proyecto, tiempo, intentos, matricula) => {
   try {
     const response = await fetch("/api/sendData", {
       method: "POST",
@@ -6,9 +6,13 @@ export const sendData = async (proyecto, tiempo, intentos) => {
       body: JSON.stringify({ proyecto, tiempo, intentos, matricula }),
     })
 
-    const result = await response.json();
-    console.log("✅ Envío a Vercel:", result);
+    if (!response.ok) {
+      throw new Error(`Error en la respuesta: ${response.status}`)
+    }
+
+    const result = await response.json()
+    console.log("✅ Envío a Vercel:", result)
   } catch (error) {
-    console.error("❌ Error enviando datos:", error);
+    console.error("❌ Error enviando datos:", error)
   }
 }

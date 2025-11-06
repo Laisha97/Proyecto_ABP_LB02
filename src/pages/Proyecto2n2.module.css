@@ -1,10 +1,11 @@
 .container {
   padding: 50px;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   position: relative;
   z-index: 0;
   font-family: 'Montserrat', sans-serif;
-  color: #333; /* color del texto */
+  color: #333;
+  /* color del texto */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,46 +40,74 @@
 
 }
 
-  .icono {
-    position: absolute;
-    font-size: 2.5rem;
-    color: rgba(0, 0, 0, 0.2); /* se ven como fondo */
-    animation: flotar 6s infinite ease-in-out;
+.icono {
+  position: absolute;
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.2);
+  /* se ven como fondo */
+  animation: flotar 6s infinite ease-in-out;
   z-index: -1;
+}
+
+/* Ejemplo de posiciones distintas */
+.icono:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.icono:nth-child(2) {
+  top: 50%;
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.icono:nth-child(3) {
+  top: 70%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+/* Animación flotante */
+@keyframes flotar {
+  0% {
+    transform: translateY(0px);
   }
 
-  /* Ejemplo de posiciones distintas */
-  .icono:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-  .icono:nth-child(2) { top: 50%; left: 30%; animation-delay: 2s; }
-  .icono:nth-child(3) { top: 70%; left: 70%; animation-delay: 4s; }
-
-  /* Animación flotante */
-  @keyframes flotar {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
+  50% {
+    transform: translateY(-20px);
   }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
 
 
 /* Títulos */
-  .p1titulo {
-    font-size: 2.2rem;
-    color: #213f61;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  }
+.p1titulo {
+  font-size: 2.2rem;
+  color: #213f61;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
 
-  .p1subtitulo {
-    font-size: 3.5rem;
-    color: #213f61;
-    margin-bottom: 30px;
-    text-align: center;
-  }
+.p1subtitulo {
+  font-size: 3.5rem;
+  color: #213f61;
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-  .enunciado {
+.minu {
+  font-size: small;
+  color: #9f9f9f;
+}
+
+.enunciado {
   border-radius: 12px;
   padding: 10px;
   margin-bottom: 20px;
@@ -91,7 +120,7 @@
 .cardHighlight .enunciado p,
 .cardHighlight .enunciado ul,
 .cardHighlight .enunciado li {
-  color: #fff; 
+  color: #fff;
 }
 
 .enunciado p {
@@ -111,45 +140,46 @@
 }
 
 
-  /* Iconos en títulos */
-  .icon {
-    color: #213f61;
-  }
+/* Iconos en títulos */
+.icon {
+  color: #213f61;
+}
 
 /* Cards */
-  .card, .cardHighlight {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+.card,
+.cardHighlight {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-  .card {
-    background: #fff;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0,0,0,0.05);
-  }
+.card {
+  background: #fff;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
 
-  .cardHighlight {
-    background: #213f61;
-    color: #fff !important; 
-    font-weight: bold;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
+.cardHighlight {
+  background: #213f61;
+  color: #fff !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-  .cardHighlight:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  }
+.cardHighlight:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
 
 /* Textareas */
 .textarea {
@@ -164,65 +194,69 @@
 }
 
 /* Botones */
-  .button, .verifyButton {
-    padding: 12px 25px;
-    border-radius: 8px;
-    border: none;
-    background: #213f61;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 5px;
-  }
+.button,
+.verifyButton {
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  background: #213f61;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 5px;
+}
 
-  .button:hover, .verifyButton:hover {
-    background: #213f61;
-    transform: translateY(-2px);
-  }
+.button:hover,
+.verifyButton:hover {
+  background: #213f61;
+  transform: translateY(-2px);
+}
 
 /* Éxito y error */
-  .success, .error {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  }
+.success,
+.error {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
 
-  .success {
-    background: #d4edda;
-    color: #155724;
-    position: relative; /* para confeti */
-  }
+.success {
+  background: #d4edda;
+  color: #155724;
+  position: relative;
+  /* para confeti */
+}
 
-  .error {
-    background: #f8d7da;
-    color: #721c24;
-  }
+.error {
+  background: #f8d7da;
+  color: #721c24;
+}
 
 /* Listas */
-  .tiempos {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0 0;
-  }
+.tiempos {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
 
-  .tiempos li {
-    font-size: 1.1rem;
-    margin: 5px 0;
-    position: relative;
-    padding-left: 20px;
-  }
+.tiempos li {
+  font-size: 1.1rem;
+  margin: 5px 0;
+  position: relative;
+  padding-left: 20px;
+}
 
-  .tiempos li::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    color: #48505a;
-  }
+.tiempos li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #48505a;
+}
 
 /* Confeti full screen */
 .react-confetti {

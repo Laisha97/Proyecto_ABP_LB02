@@ -76,18 +76,23 @@ const Proyecto1n2 = () => {
   ]
 
   useEffect(() => {
-    const storedProblema = sessionStorage.getItem("problemaNivel1")
-    if (storedProblema) {
-      setProblema(JSON.parse(storedProblema))
+
+    const storedIndex = sessionStorage.getItem("problemaNivel2Index")
+
+    if (storedIndex !== null) {
+
+      setProblema(problemasNivel2[parseInt(storedIndex, 10)])
     } else {
-      const random = Math.floor(Math.random() * problemasNivel1.length)
-      const selected = problemasNivel1[random]
-      setProblema(selected)
-      sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+
+      const random = Math.floor(Math.random() * problemasNivel2.length)
+      setProblema(problemasNivel2[random])
+      sessionStorage.setItem("problemaNivel2Index", random)
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }, [])
+
+
 
   const separar = (input) =>
     input.split(/\n|,/).map((s) => s.trim()).filter(Boolean)
@@ -116,8 +121,8 @@ const Proyecto1n2 = () => {
       const valoresUsuario = {}
       lines.forEach((line) => {
         if (line.includes("=")) {
-          const [varName, val] = line.split("=").map((s) => s.trim())
-          valoresUsuario[varName] = Math.round(Number(val))
+          const [varName, val] = line.split("=").map(s => s.trim())
+          valoresUsuario[varName] = parseFloat(val)
         }
       })
 
@@ -205,6 +210,8 @@ const Proyecto1n2 = () => {
 
         <div className={styles.card}>
           <h3>Ingresa tus ecuaciones</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
+
           <textarea
             value={ecuaciones}
             onChange={(e) => setEcuaciones(e.target.value)}
@@ -219,6 +226,8 @@ const Proyecto1n2 = () => {
 
         <div className={styles.card}>
           <h3>Ingresa los valores que obtuviste</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
+
           <textarea
             value={valoresTexto}
             onChange={(e) => setValoresTexto(e.target.value)}

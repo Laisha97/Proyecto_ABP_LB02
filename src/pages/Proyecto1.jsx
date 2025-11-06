@@ -72,18 +72,36 @@ const Proyecto1 = () => {
   ]
 
   useEffect(() => {
-    const storedProblema = sessionStorage.getItem("problemaNivel1")
-    if (storedProblema) {
-      setProblema(JSON.parse(storedProblema))
-    } else {
-      const random = Math.floor(Math.random() * problemasNivel1.length)
-      const selected = problemasNivel1[random]
+    if (typeof window !== 'undefined') {
+      let selected = null
+      const storedProblema = sessionStorage.getItem("problemaNivel1")
+
+      if (storedProblema) {
+        try {
+          selected = JSON.parse(storedProblema)
+        } catch (err) {
+          console.error("❌ Error al leer problema guardado:", err)
+        }
+      }
+
+      if (!selected) {
+        const random = Math.floor(Math.random() * problemasNivel1.length)
+        selected = problemasNivel1[random]
+        sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+      }
+
       setProblema(selected)
-      sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+
+      const matricula = localStorage.getItem("matricula")
+      if (matricula) {
+        sendData("Proyecto1", "0", 0, matricula)
+      }
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }, [])
+
+
 
   const separar = (input) =>
     input.split(/\n|,/).map((s) => s.trim()).filter(Boolean)
@@ -106,38 +124,54 @@ const Proyecto1 = () => {
     }
   }
 
-const validarValores = () => {
-  try {
-    const lines = separar(valoresTexto)
-    const valoresUsuario = {}
-    lines.forEach((line) => {
-      if (line.includes("=")) {
-        const [varName, val] = line.split("=").map((s) => s.trim())
-        valoresUsuario[varName] = Number(val)
+  {/*if (!problema || typeof problema.validacion !== "function") {
+  alert("El problema no está definido correctamente.")
+  return
+}*/}
+
+  const validarValores = () => {
+    try {
+      const lines = valoresTexto.split(/\n|,/).map((s) => s.trim()).filter(Boolean)
+
+      const valoresUsuario = {}
+
+      lines.forEach((line) => {
+        const match = line.match(/^([xyz])\s*=\s*(-?\d+(\.\d+)?)$/)
+        if (match) {
+          const varName = match[1] // x, y o z
+          const val = parseFloat(match[2]) // número
+          valoresUsuario[varName] = val
+        }
+      })
+
+      const { x, y, z } = valoresUsuario
+
+      if (x === undefined || y === undefined || z === undefined) {
+        alert("Debes ingresar x, y y z correctamente.")
+        return
       }
-    })
 
-    const { x, y, z } = valoresUsuario
-    const esCorrecto = problema && problema.validacion({ x, y, z })
-    setResultado(esCorrecto ? "correcto" : "incorrecto")
+      const esCorrecto = problema && problema.validacion({ x, y, z })
+      setResultado(esCorrecto ? "correcto" : "incorrecto")
 
-    const nuevoIntento = intentos + 1
-    setIntentos(nuevoIntento)
+      const nuevoIntento = intentos + 1
+      setIntentos(nuevoIntento)
 
-    const matricula = localStorage.getItem("matricula")
-    sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
+      const matricula = typeof window !== 'undefined' ? localStorage.getItem("matricula") : null
+      sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
 
-  } catch (err) {
-    console.error(err)
-    setResultado("incorrecto")
+    } catch (err) {
+      console.error("❌ Error al validar:", err)
+      setResultado("incorrecto")
 
-    const nuevoIntento = intentos + 1
-    setIntentos(nuevoIntento)
+      const nuevoIntento = intentos + 1
+      setIntentos(nuevoIntento)
 
-    const matricula = localStorage.getItem("matricula")
-    sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
+      const matricula = typeof window !== 'undefined' ? localStorage.getItem("matricula") : null
+      sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
+    }
   }
-}
+
 
 
   return (
@@ -200,6 +234,7 @@ const validarValores = () => {
 
         <div className={styles.card}>
           <h3>Ingresa tus ecuaciones</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
           <textarea
             value={ecuaciones}
             onChange={(e) => setEcuaciones(e.target.value)}
@@ -214,6 +249,7 @@ const validarValores = () => {
 
         <div className={styles.card}>
           <h3>Ingresa los valores que obtuviste</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
           <textarea
             value={valoresTexto}
             onChange={(e) => setValoresTexto(e.target.value)}

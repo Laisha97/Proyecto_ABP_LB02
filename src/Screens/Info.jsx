@@ -10,7 +10,7 @@ const Info = () => {
       <p className={styles.sub1}>¿Qué es el aprendizaje basado en proyectos?</p>
 
       <p className={styles.textoin}>
-        El Aprendizaje Basado en Proyectos (ABP) es una metodología educativa colaborativa que enfrenta a los estudiantes a situaciones reales, 
+        El Aprendizaje Basado en Proyectos (ABPy) es una metodología educativa colaborativa que enfrenta a los estudiantes a situaciones reales, 
         donde deben plantear soluciones y generar productos, servicios o comprensiones capaces de resolver problemas o satisfacer necesidades. 
         Cada proyecto consiste en un conjunto de actividades interconectadas que toman en cuenta los recursos y el tiempo disponible, 
         promoviendo un aprendizaje activo y significativo.
@@ -31,7 +31,7 @@ const Info = () => {
         </div>
 
         {/* Cómo implementar */}
-        <h2 className={styles.sectionTitle}>¿Cómo implementar el ABP?</h2>
+        <h2 className={styles.sectionTitle}>¿Cómo implementar el ABPy?</h2>
         <div className={styles.cardsContainer}>
           {/* Fase inicial */}
           <div className={styles.card}>

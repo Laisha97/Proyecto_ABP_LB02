@@ -10,7 +10,7 @@ import { sendData } from "../utils/sendData"
 import { useLocation } from "react-router-dom"
 
 
-const problemasNivel2 = [
+const problemasNivel2p2 = [
     {
         enunciado: (
             <div>
@@ -24,16 +24,21 @@ const problemasNivel2 = [
                 <p>Debes diseñar dos semáforos secundarios que se sincronicen con el principal para evitar choques.</p>
 
                 <p>Condiciones:</p>
+
+                <p>Semáforo Secundario 1 (SS1):</p>
                 <ul>
-                    <li>SS1 debe tener su luz verde durante la mitad del tiempo que el principal está en rojo.</li>
-                    <li>SS1 debe tener su luz amarilla durante 5 segundos.</li>
-                    <li>El ciclo total de SS1 debe ser igual al ciclo del semáforo principal.</li>
-                    <li>SS2 debe tener su luz verde 10 segundos más que la luz verde de SS1.</li>
-                    <li>SS2 debe tener su luz amarilla igual a 5 segundos.</li>
-                    <li>El ciclo total de SS2 debe ser igual al ciclo del semáforo principal.</li>
+                    <li>SS1 tiene la luz verde encendida durante la mitad del tiempo que el semáforo principal está en rojo.</li>
+                    <li>La luz amarilla de SS1 dura 5 segundos.</li>
+                    <li>El ciclo total de SS1 es igual al del semáforo principal (80 s).</li>
                 </ul>
 
-                <p>Primero escribe tus ecuaciones usando estas condiciones, luego coloca los valores resultantes en otro cuadro.</p>
+                <p>Semáforo Secundario 2 (SS2):</p>
+                <ul>
+                    <li>SS2 tiene la luz verde encendida 10 segundos más que SS1.</li>
+                    <li>La luz amarilla de SS2 dura también 5 segundos.</li>
+                    <li>El ciclo total de SS2 es igual al del semáforo principal (80 s).</li>
+                </ul>
+
             </div>
         ),
         variablesDadas: { x1: 40, y1: 5, z1: 36 },
@@ -62,16 +67,21 @@ const problemasNivel2 = [
                 <p>Debes diseñar dos semáforos secundarios que se sincronicen con el principal para evitar choques.</p>
 
                 <p>Condiciones:</p>
+
+                <p>Semáforo Secundario 1 (SS1):</p>
                 <ul>
-                    <li>SS1 debe tener su luz verde durante un tercio del tiempo que el principal está en verde.</li>
-                    <li>SS1 debe tener su luz amarilla durante un quinto del tiempo que el principal está en rojo.</li>
-                    <li>El ciclo total de SS1 debe ser igual al ciclo del semáforo principal.</li>
-                    <li>SS2 debe tener su luz verde 5 segundos más que la luz verde de SS1.</li>
-                    <li>SS2 debe tener su luz amarilla igual a la de SS1.</li>
-                    <li>El ciclo total de SS2 debe ser igual al ciclo del semáforo principal.</li>
+                    <li>Su luz verde dura un tercio del tiempo verde del semáforo principal.</li>
+                    <li>Su luz amarilla dura una quinta parte del tiempo rojo del semáforo principal.</li>
+                    <li>El ciclo total de SS1 debe ser igual al ciclo del semáforo principal (70 s).</li>
                 </ul>
 
-                <p>Primero escribe tus ecuaciones usando estas condiciones, luego coloca los valores resultantes en otro cuadro.</p>
+                <p>Semáforo Secundario 2 (SS2):</p>
+                <ul>
+                    <li>Su luz verde dura 5 segundos más que la luz verde de SS1.</li>
+                    <li>Su luz amarilla dura lo mismo que la luz amarilla de SS1.</li>
+                    <li>El ciclo total de SS2 debe ser igual al ciclo del semáforo principal (70 s).</li>
+                </ul>
+
             </div>
         ),
         variablesDadas: { x1: 30, y1: 10, z1: 30 },
@@ -100,16 +110,21 @@ const problemasNivel2 = [
                 <p>Debes diseñar dos semáforos secundarios que se sincronicen con el principal para evitar choques.</p>
 
                 <p>Condiciones:</p>
+
+                <p>Semáforo Secundario 1 (SS1):</p>
                 <ul>
-                    <li>SS1 debe tener su luz verde 10 segundos menos que el tiempo que el semáforo principal está en rojo.</li>
-                    <li>SS1 debe tener su luz amarilla un tercio del tiempo verde del principal.</li>
-                    <li>El ciclo total de SS1 debe ser igual al ciclo del semáforo principal.</li>
-                    <li>SS2 debe tener su luz verde 5 segundos menos que la luz verde de SS1.</li>
-                    <li>SS2 debe tener su luz amarilla 2 segundos más que la luz amarilla de SS1.</li>
-                    <li>El ciclo total de SS2 debe ser igual al ciclo del semáforo principal.</li>
+                    <li>SS1 tendrá su luz verde encendida durante 10 segundos menos que el tiempo que el semáforo principal permanece en rojo.</li>
+                    <li>La luz amarilla de SS1 durará un tercio del tiempo verde del semáforo principal.</li>
+                    <li>El ciclo total de SS1 será igual al del semáforo principal (90 s).</li>
                 </ul>
 
-                <p>Primero escribe tus ecuaciones usando estas condiciones, luego coloca los valores resultantes en otro cuadro.</p>
+                <p>Semáforo Secundario 2 (SS2):</p>
+                <ul>
+                    <li>SS2 tendrá su luz verde 5 segundos menos que la de SS1.</li>
+                    <li>La luz amarilla de SS2 durará 2 segundos más que la de SS1.</li>
+                    <li>El ciclo total de SS2 será igual al del semáforo principal (90 s).</li>
+                </ul> 
+
             </div>
         ),
         variablesDadas: { x1: 45, y1: 15, z1: 30 },
@@ -174,24 +189,21 @@ const Proyecto2n2 = () => {
     ]
 
     useEffect(() => {
-        const storedProblema = sessionStorage.getItem("problemaNivel1")
-        if (storedProblema) {
-            setProblema(JSON.parse(storedProblema))
+        const storedIndex = sessionStorage.getItem("problemaNivel2p2Index")
+        let selected
+
+        if (storedIndex !== null) {
+            selected = problemasNivel2p2[parseInt(storedIndex)]
         } else {
-            const random = Math.floor(Math.random() * problemasNivel1.length)
-            const selected = problemasNivel1[random]
-            setProblema(selected)
-            sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
+            const random = Math.floor(Math.random() * problemasNivel2p2.length)
+            selected = problemasNivel2p2[random]
+            sessionStorage.setItem("problemaNivel2p2Index", random)
         }
 
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-
-        const interval = setInterval(() => {
-            setTiempo(prev => (prev + 1) % 60); // ciclo de 60 seg
-        }, 1000)
-
-        return () => clearInterval(interval)
+        setProblema(selected)
     }, [])
+
+
 
     // Estado de semáforos según el tiempo
     const principalColor = () => {
@@ -306,7 +318,7 @@ const Proyecto2n2 = () => {
 
                 {problema && (
                     <div className={styles.cardHighlight} style={{ marginTop: "15px" }}>
-                        <p>{problema.enunciado}</p>
+                        <div>{problema.enunciado}</div>
                         <div
                             ref={semaforosRef}
                             style={{
@@ -390,6 +402,7 @@ const Proyecto2n2 = () => {
 
                 <div className={styles.card}>
                     <h3>Ingresa tus ecuaciones</h3>
+                    <h4 className={styles.minu}>(letras minúsculas)</h4>
                     <textarea
                         value={ecuaciones}
                         onChange={(e) => setEcuaciones(e.target.value)}
@@ -402,6 +415,7 @@ const Proyecto2n2 = () => {
 
                 <div className={styles.card}>
                     <h3>Ingresa los valores que obtuviste</h3>
+                    <h4 className={styles.minu}>(letras minúsculas)</h4>
                     <textarea
                         value={valoresTexto}
                         onChange={(e) => setValoresTexto(e.target.value)}

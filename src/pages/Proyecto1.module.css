@@ -61,6 +61,11 @@
     text-align: center;
   }
 
+    .minu{
+    font-size: small;
+    color: #9f9f9f;
+  }
+
   /* Iconos en títulos */
   .icon {
     color: #213f61;

@@ -73,9 +73,14 @@
 
   .p1subtitulo {
     font-size: 3.5rem;
-    color: #213f61;
+    color: #acacac;
     margin-bottom: 30px;
     text-align: center;
+  }
+
+  .minu{
+    font-size: small;
+    color: #9f9f9f;
   }
 
   .enunciado {

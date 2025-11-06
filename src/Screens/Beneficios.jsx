@@ -8,7 +8,7 @@ const Beneficios = () => {
             <div className={styles.Beneficios}>
                 <h1>Beneficios del Aprendizaje Basado en Proyectos</h1>
                 <p>
-                    El Aprendizaje Basado en Proyectos (ABP) ofrece múltiples beneficios que fortalecen los procesos de enseñanza-aprendizaje, tales como:
+                    El Aprendizaje Basado en Proyectos (ABPy) ofrece múltiples beneficios que fortalecen los procesos de enseñanza-aprendizaje, tales como:
                 </p>
             </div>
 

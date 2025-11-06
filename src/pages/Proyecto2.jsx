@@ -10,7 +10,7 @@ import { sendData } from "../utils/sendData"
 import { useLocation } from "react-router-dom"
 
 // Problema nivel 1
-const problemasNivel1 = [
+const problemasNivel1p2 = [
   {
     enunciado: (
       <div>
@@ -23,8 +23,8 @@ const problemasNivel1 = [
         <p>Debes diseñar un <span>semáforo secundario</span> que permita el paso de autos cuando el principal esté en rojo.</p>
         <p>Condiciones:</p>
         <ul>
-          <li>El semáforo secundario debe durar 10 segundos menos en verde que el rojo del semáforo principal.</li>
-          <li>El tiempo en amarillo del semáforo secundario será 5 segundos.</li>
+          <li>Su luz verde debe durar 10 segundos menos que la luz roja del semáforo principal.</li>
+          <li>La luz amarilla debe durar 5 segundos.</li>
           <li>El ciclo total del semáforo secundario debe ser de 60 segundos.</li>
         </ul>
         <p>¿Cuánto tiempo debe durar el semáforo secundario en verde, amarillo y rojo?</p>
@@ -49,8 +49,8 @@ const problemasNivel1 = [
         <p>El <span>semáforo secundario</span> se ajustará en proporción al principal.</p>
         <p>Condiciones:</p>
         <ul>
-          <li>El tiempo en verde del semáforo secundario será la mitad del tiempo verde del principal.</li>
-          <li>El tiempo en amarillo será un tercio del tiempo en rojo del secundario.</li>
+          <li>Su verde dura la mitad del verde del principal.</li>
+          <li>Su amarillo dura un tercio del tiempo del rojo del principal.</li>
           <li>El ciclo total del semáforo secundario será igual al del principal (80 segundos).</li>
         </ul>
         <p>¿Cuánto tiempo debe durar el semáforo secundario en verde, amarillo y rojo?</p>
@@ -130,25 +130,28 @@ const Proyecto2 = () => {
     { key: "z2", label: "rojo SS", color: "red" },
   ]
 
-useEffect(() => {
-  const storedProblema = sessionStorage.getItem("problemaNivel1")
-  if (storedProblema) {
-    setProblema(JSON.parse(storedProblema))
-  } else {
-    const random = Math.floor(Math.random() * problemasNivel1.length)
-    const selected = problemasNivel1[random]
-    setProblema(selected)
-    sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
-  }
+  useEffect(() => {
+    const storedIndex = sessionStorage.getItem("problemaNivel1p2_index")
+    let index
 
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+    if (storedIndex) {
+      index = parseInt(storedIndex)
+    } else {
+      index = Math.floor(Math.random() * problemasNivel1p2.length)
+      sessionStorage.setItem("problemaNivel1p2_index", index)
+    }
 
-  const interval = setInterval(() => {
-    setTiempo(prev => (prev + 1) % 60); // ciclo de 60 seg
-  }, 1000)
+    setProblema(problemasNivel1p2[index])
 
-  return () => clearInterval(interval)
-}, [])
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+
+    const interval = setInterval(() => {
+      setTiempo(prev => (prev + 1) % 60)
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
 
 
   // Estado de semáforos según el tiempo
@@ -258,7 +261,7 @@ useEffect(() => {
 
         {problema && (
           <div className={styles.cardHighlight} style={{ marginTop: "15px" }}>
-            <p>{problema.enunciado}</p>
+            <div>{problema.enunciado}</div>
             <div
               ref={semaforosRef}
               style={{
@@ -320,6 +323,7 @@ useEffect(() => {
 
         <div className={styles.card}>
           <h3>Ingresa tus ecuaciones</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
           <textarea
             value={ecuaciones}
             onChange={(e) => setEcuaciones(e.target.value)}
@@ -332,6 +336,7 @@ useEffect(() => {
 
         <div className={styles.card}>
           <h3>Ingresa los valores que obtuviste</h3>
+          <h4 className={styles.minu}>(letras minúsculas)</h4>
           <textarea
             value={valoresTexto}
             onChange={(e) => setValoresTexto(e.target.value)}
