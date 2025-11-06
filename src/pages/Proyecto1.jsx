@@ -19,7 +19,7 @@ const problemasNivel1 = [
           y la TV necesita el doble de lo que recibe el celular.
         </p>
         <p>
-          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?,
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?
         </p>
       </>
     ),
@@ -36,7 +36,7 @@ const problemasNivel1 = [
           y la TV consume lo mismo que la laptop.
         </p>
         <p>
-          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?,
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?
         </p>
       </>
     ),
@@ -53,7 +53,7 @@ const problemasNivel1 = [
           y el celular consume la mitad de la TV.
         </p>
         <p>
-          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 120 Mbps?,
+          Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 120 Mbps?
         </p>
       </>
     ),
