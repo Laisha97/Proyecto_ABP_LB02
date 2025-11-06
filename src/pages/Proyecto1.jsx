@@ -15,7 +15,7 @@ const problemasNivel1 = [
     enunciado: `En tu casa hay una laptop, una TV y un celular.
     La laptop necesita 20 Mbps más que el celular,
     y la TV necesita el doble de lo que recibe el celular.
-    ¿Cómo se debe repartir el internet para usar exactamente 100 Mbps?`,
+    Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?`,
     validacion: ({ x, y, z }) =>
       Math.abs(x - (y + 20)) <= 0.5 &&
       Math.abs(z - 2 * y) <= 0.5 &&
@@ -25,7 +25,7 @@ const problemasNivel1 = [
     enunciado: `En tu casa hay una laptop, una TV y un celular.
     El celular consume la mitad de lo que consume la laptop,
     y la TV consume lo mismo que la laptop.
-    ¿Cómo repartir el internet para usar exactamente 100 Mbps?`,
+    Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 100 Mbps?`,
     validacion: ({ x, y, z }) =>
       Math.abs(y - x / 2) <= 0.5 &&
       Math.abs(z - x) <= 0.5 &&
@@ -35,7 +35,7 @@ const problemasNivel1 = [
     enunciado: `En tu casa hay una laptop, una TV y un celular.
     La TV consume 40 Mbps más que la laptop,
     y el celular consume la mitad de la TV.
-    ¿Cómo repartir el internet para usar exactamente 120 Mbps?`,
+    Si x, y y z representan el consumo de internet de cada dispositivo, ¿cómo deben repartirse para que el total sea de 120 Mbps?`,
     validacion: ({ x, y, z }) =>
       Math.abs(z - (x + 40)) <= 0.5 &&
       Math.abs(y - z / 2) <= 0.5 &&
