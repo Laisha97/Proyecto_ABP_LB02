@@ -7,19 +7,29 @@ export default async function handler(req, res) {
     const { proyecto, tiempo, intentos, matricula } = req.body
     console.log("📥 Datos recibidos en Vercel:", req.body)
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx6HcTHqQa7emtoMVaihqvPk14fS8uaG0-jkFvhMY3GqjYA7U3YiLw6XGYPEFOShKa3/exec"
+    const GOOGLE_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbx6HcTHqQa7emtoMVaihqvPk14fS8uaG0-jkFvhMY3GqjYA7U3YiLw6XGYPEFOShKa3/exec"
 
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ proyecto, tiempo, intentos, matricula }),
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        proyecto,
+        tiempo,
+        intentos,
+        matricula,
+      }),
     })
 
     const text = await response.text()
 
-    return res.status(200).json({ message: "Datos enviados correctamente", response: text })
+    return res
+      .status(200)
+      .json({ message: "Datos enviados correctamente", response: text })
   } catch (error) {
     console.error("Error en la API de Vercel:", error)
-    return res.status(500).json({ message: "Error enviando datos", error: error.message })
+    return res
+      .status(500)
+      .json({ message: "Error enviando datos", error: error.message })
   }
 }
