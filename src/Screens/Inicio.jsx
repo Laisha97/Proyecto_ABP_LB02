@@ -16,36 +16,17 @@ const Inicio = () => {
     }, [navigate])
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         if (matricula.trim() === '') return
 
-        navigate('/home')
-        try {
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('matricula', matricula)
-            }
-
-
-            const response = await fetch('/api/sendData', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    proyecto: 'Inicio',
-                    tiempo: '0',
-                    intentos: 1,
-                    matricula: matricula
-                })
-            })
-
-            const result = await response.json()
-            console.log('✅ Matrícula registrada:', result)
-
-
-        } catch (error) {
-            console.error('❌ Error al registrar matrícula:', error)
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('matricula', matricula)
         }
+
+        navigate('/home')
     }
+
 
     return (
         <div className={styles.inicioContainer}>
