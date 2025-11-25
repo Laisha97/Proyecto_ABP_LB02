@@ -137,24 +137,24 @@ const Proyecto1 = () => {
 
   const validarValores = () => {
     try {
-      const lines = valoresTexto.split(/\n|,/).map((s) => s.trim()).filter(Boolean)
+      const lines = valoresTexto.split(/\n|,/).map((s) => s.trim()).filter(Boolean);
 
-      const valoresUsuario = {}
+      const valoresUsuario = {};
 
       lines.forEach((line) => {
-        const match = line.match(/^([xyz])\s*=\s*(-?\d+(\.\d+)?)$/)
+        const match = line.match(/^([xyz])\s*=\s*(-?\d+(\.\d+)?)$/);
         if (match) {
-          const varName = match[1] // x, y o z
-          const val = parseFloat(match[2]) // número
-          valoresUsuario[varName] = val
+          const varName = match[1];
+          const val = parseFloat(match[2]);
+          valoresUsuario[varName] = val;
         }
-      })
+      });
 
-      const { x, y, z } = valoresUsuario
+      const { x, y, z } = valoresUsuario;
 
       if (x === undefined || y === undefined || z === undefined) {
         alert("Debes ingresar x, y y z correctamente.")
-        return
+        return;
       }
 
       const esCorrecto = problema && problema.validacion({ x, y, z })
@@ -163,8 +163,19 @@ const Proyecto1 = () => {
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
 
-      const matricula = typeof window !== 'undefined' ? localStorage.getItem("matricula") : null
+      // ⬇ ⬇ ⬇ AQUI VA EL CAMBIO IMPORTANTE ⬇ ⬇ ⬇
+      const matricula = typeof window !== "undefined"
+        ? localStorage.getItem("matricula")
+        : null;
+
+      console.log("📌 Matricula enviada desde Proyecto1:", matricula)
+
+      if (!matricula) {
+        console.warn("⚠️ No se encontró matrícula en localStorage antes de sendData")
+      }
+
       sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
+      // ⬆ ⬆ ⬆ CAMBIO AQUI ⬆ ⬆ ⬆
 
     } catch (err) {
       console.error("❌ Error al validar:", err)
@@ -173,10 +184,21 @@ const Proyecto1 = () => {
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
 
-      const matricula = typeof window !== 'undefined' ? localStorage.getItem("matricula") : null
+      // Repetimos también el debug en el catch
+      const matricula = typeof window !== "undefined"
+        ? localStorage.getItem("matricula")
+        : null
+
+      console.log("📌 Matricula enviada desde Proyecto1 (catch):", matricula)
+
+      if (!matricula) {
+        console.warn("⚠️ No se encontró matrícula en localStorage antes de sendData (catch)")
+      }
+
       sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
     }
   }
+
 
 
 
