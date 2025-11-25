@@ -150,7 +150,7 @@ const Proyecto1 = () => {
         }
       });
 
-      const { x, y, z } = valoresUsuario;
+      const { x, y, z } = valoresUsuario
 
       if (x === undefined || y === undefined || z === undefined) {
         alert("Debes ingresar x, y y z correctamente.")
