@@ -163,7 +163,6 @@ const Proyecto1 = () => {
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
 
-      // ⬇ ⬇ ⬇ AQUI VA EL CAMBIO IMPORTANTE ⬇ ⬇ ⬇
       const matricula = typeof window !== "undefined"
         ? localStorage.getItem("matricula")
         : null;
@@ -175,7 +174,6 @@ const Proyecto1 = () => {
       }
 
       sendData("Proyecto1", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
-      // ⬆ ⬆ ⬆ CAMBIO AQUI ⬆ ⬆ ⬆
 
     } catch (err) {
       console.error("❌ Error al validar:", err)
@@ -184,7 +182,6 @@ const Proyecto1 = () => {
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
 
-      // Repetimos también el debug en el catch
       const matricula = typeof window !== "undefined"
         ? localStorage.getItem("matricula")
         : null
