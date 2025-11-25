@@ -24,7 +24,7 @@ const Navbar = () => {
   const links = [
     { id: 1, link: 'Inicio', to: 'home' },
     { id: 2, link: 'Proyectos', to: 'projects' },
-    { id: 3, link: 'Beneficios', to: 'beneficios' }, // cambiar 'benefits' a 'beneficios' si tu ruta es /beneficios
+    { id: 3, link: 'Beneficios', to: 'beneficios' }, 
   ]
 
   return (
@@ -80,7 +80,7 @@ const Navbar = () => {
                 </ScrollLink>
               ) : (
                 <RouterLink
-                  to={`/#${to}`}
+                  to={`/?scroll=${to}`}
                   className={styles.NavLink}
                   onClick={() => setNavbarOpen(false)}
                 >
@@ -90,19 +90,19 @@ const Navbar = () => {
               <div className={styles.border}></div>
             </li>
           ))}
-<li>
-    <RouterLink
-      to="/"
-      className={styles.NavLink}
-      onClick={() => {
-        localStorage.removeItem("matricula")
-        setNavbarOpen(false)
-      }}
-    >
-      Cerrar sesión
-    </RouterLink>
-    <div className={styles.border}></div>
-  </li>
+          <li>
+            <RouterLink
+              to="/"
+              className={`${styles.NavLink} ${styles.logoutButton}`}
+              onClick={() => {
+                localStorage.removeItem("matricula")
+                setNavbarOpen(false)
+              }}
+            >
+              Cerrar sesión
+            </RouterLink>
+            <div className={styles.border}></div>
+          </li>
 
         </ul>
       )}

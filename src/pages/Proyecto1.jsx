@@ -94,35 +94,25 @@ const Proyecto1 = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      let selected = null
-      const storedProblema = sessionStorage.getItem("problemaNivel1")
+      try {
+        let selected = null
+        const storedIndex = sessionStorage.getItem("problemaNivel1Index")
 
-      if (storedProblema) {
-        try {
-          selected = JSON.parse(storedProblema)
-        } catch (err) {
-          console.error("❌ Error al leer problema guardado:", err)
+        if (storedIndex !== null) {
+          selected = problemasNivel1[parseInt(storedIndex)]
+        } else {
+          const random = Math.floor(Math.random() * problemasNivel1.length)
+          selected = problemasNivel1[random]
+          sessionStorage.setItem("problemaNivel1Index", random)
         }
-      }
 
-      if (!selected) {
-        const random = Math.floor(Math.random() * problemasNivel1.length)
-        selected = problemasNivel1[random]
-        sessionStorage.setItem("problemaNivel1", JSON.stringify(selected))
-      }
+        setProblema(selected)
 
-      setProblema(selected)
-
-      const matricula = localStorage.getItem("matricula")
-      if (matricula) {
-        sendData("Proyecto1", "0", 0, matricula)
+      } catch (err) {
+        console.error("❌ Error al leer problema guardado:", err)
       }
     }
-
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
   }, [])
-
-
 
   const separar = (input) =>
     input.split(/\n|,/).map((s) => s.trim()).filter(Boolean)
@@ -144,11 +134,6 @@ const Proyecto1 = () => {
       setSubidas((prev) => ({ ...prev, valores: true }))
     }
   }
-
-  {/*if (!problema || typeof problema.validacion !== "function") {
-  alert("El problema no está definido correctamente.")
-  return
-}*/}
 
   const validarValores = () => {
     try {
@@ -363,5 +348,4 @@ const Proyecto1 = () => {
     </div>
   )
 }
-
 export default Proyecto1

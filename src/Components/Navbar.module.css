@@ -121,3 +121,34 @@ body {
     background-color: #a9bed6;
     list-style: none;
 }
+
+.logoutButton {
+  background-color: #213f61; 
+ color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+}
+
+.logoutButton:hover {
+  background-color: #1b324f; 
+  transform: scale(1.05); 
+}
+
+.logoutButton {
+  background-color: #213f61;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .logoutButton {
+    margin-top: 20px; /* solo en versión móvil */
+    display: block;
+    width: fit-content;
+  }
+}

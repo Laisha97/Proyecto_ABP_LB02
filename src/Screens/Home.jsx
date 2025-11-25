@@ -6,6 +6,8 @@ import casa from '../assets/casa.png'
 import semaforo from '../assets/semaforo.png'
 import { Link as ScrollLink } from 'react-scroll'
 import { Link as RouterLink } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+import { scroller } from "react-scroll"
 
 
 
@@ -18,7 +20,27 @@ const Home = () => {
     window.addEventListener('scroll', handleScroll)
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, []);
+  }, [])
+
+  const location = useLocation()
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const section = params.get("scroll")
+
+    if (section) {
+      setTimeout(() => {
+        scroller.scrollTo(section, {
+          duration: 600,
+          delay: 0,
+          smooth: "easeInOutQuart",
+          offset: -50,
+        })
+      }, 150)
+    }
+  }, [location])
+
+
 
   return (
 

@@ -14,19 +14,30 @@ function ScrollToSection() {
   const location = useLocation()
 
   useEffect(() => {
+    let sectionId = null
+
     if (location.hash) {
-      const id = location.hash.replace("#", "")
-      const element = document.getElementById(id)
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" })
-        }, 800)
-      }
+      sectionId = location.hash.replace("#", "")
+    }
+
+    const params = new URLSearchParams(location.search)
+    if (params.get("scroll")) {
+      sectionId = params.get("scroll")
+    }
+
+    if (sectionId) {
+      setTimeout(() => {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 300)
     }
   }, [location])
 
   return null
 }
+
 
 function AppRoutes() {
   const location = useLocation()
