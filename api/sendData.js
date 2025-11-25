@@ -7,11 +7,8 @@ export default async function handler(req, res) {
     const { proyecto, tiempo, intentos, matricula } = req.body
     console.log("📥 Datos recibidos en Vercel:", req.body)
 
-    {/*const GOOGLE_SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbyU7IvFx62tIJZ9IvFmwzgrk8_DKR_JLWJF4vO9bZ40jix2bzLSbCSpScNP1001bhFp/exec"*/}
-
-      const GOOGLE_SCRIPT_URL = "https://webhook.site/7e91a7a0-7659-4e63-a3ff-4a042aa49701";
-
+    const GOOGLE_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbwNmhBJQSq5NEgngumgtONJcdz8TIpBL8zJ1nH9nboFtokUvu3YDFouJxZzql03OMKc/exec"
 
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
