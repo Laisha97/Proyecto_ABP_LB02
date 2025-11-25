@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     {/*const GOOGLE_SCRIPT_URL =
       "https://script.google.com/macros/s/AKfycbyU7IvFx62tIJZ9IvFmwzgrk8_DKR_JLWJF4vO9bZ40jix2bzLSbCSpScNP1001bhFp/exec"*/}
 
-      const GOOGLE_SCRIPT_URL = "TU_URL_DE_WEBHOOK_SITE";
+      const GOOGLE_SCRIPT_URL = "https://webhook.site/7e91a7a0-7659-4e63-a3ff-4a042aa49701";
 
 
     const response = await fetch(GOOGLE_SCRIPT_URL, {
