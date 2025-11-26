@@ -143,7 +143,7 @@ const Proyecto1n2 = () => {
         const valoresUsuario = {};
   
         lines.forEach((line) => {
-          const match = line.match(/^([xyz])\s*=\s*(-?\d+(\.\d+)?)$/);
+          const match = line.match(/^([xyzw])\s*=\s*(-?\d+(\.\d+)?)$/);
           if (match) {
             const varName = match[1];
             const val = parseFloat(match[2]);
