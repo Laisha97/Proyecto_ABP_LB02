@@ -123,7 +123,7 @@ const problemasNivel2p2 = [
                     <li>SS2 tendrá su luz verde 5 segundos menos que la de SS1.</li>
                     <li>La luz amarilla de SS2 durará 2 segundos más que la de SS1.</li>
                     <li>El ciclo total de SS2 será igual al del semáforo principal (90 s).</li>
-                </ul> 
+                </ul>
 
             </div>
         ),
@@ -254,43 +254,52 @@ const Proyecto2n2 = () => {
 
             lines.forEach((line) => {
                 if (line.includes("=")) {
-                    let [varName, expr] = line.split("=").map(s => s.trim());
+                    let [varName, expr] = line.split("=").map(s => s.trim())
                     try {
-
-                        valoresUsuario[varName] = Function(...Object.keys(valoresUsuario), `return ${expr}`)(...Object.values(valoresUsuario));
+                        valoresUsuario[varName] = Function(...Object.keys(valoresUsuario), `return ${expr}`)(...Object.values(valoresUsuario))
                     } catch {
-                        valoresUsuario[varName] = NaN;
+                        valoresUsuario[varName] = NaN
                     }
                 }
             })
 
             const { x2, y2, z2, x3, y3, z3 } = valoresUsuario
 
-            if (problema && problema.validacion(valoresUsuario)) {
-                setResultado("correcto")
+            const esCorrecto = problema && problema.validacion(valoresUsuario)
+            setResultado(esCorrecto ? "correcto" : "incorrecto")
+
+            if (esCorrecto) {
                 setTimeout(() => {
                     semaforosRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
                     setMostrarAnimacion(true)
-                }, 500);
+                }, 500)
             } else {
-                setResultado("incorrecto")
                 setMostrarAnimacion(false)
             }
+
             const nuevoIntento = intentos + 1
             setIntentos(nuevoIntento)
 
-            sendData("Proyecto2n2", (tiempo / 60).toFixed(2), nuevoIntento)
+            const matricula = typeof window !== "undefined" ? localStorage.getItem("matricula") : null
+            console.log("📌 Matricula enviada desde Proyecto2n2:", matricula)
+
+            sendData("Proyecto2n2", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
 
         } catch (err) {
-            console.error(err)
+            console.error("❌ Error en validarValores:", err)
             setResultado("incorrecto")
             setMostrarAnimacion(false)
 
             const nuevoIntento = intentos + 1
             setIntentos(nuevoIntento)
-            sendData("Proyecto2n2", (tiempo / 60).toFixed(2), nuevoIntento)
+
+            const matricula = typeof window !== "undefined" ? localStorage.getItem("matricula") : null
+            console.log("📌 Matricula enviada desde Proyecto2n2 (catch):", matricula)
+
+            sendData("Proyecto2n2", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
         }
     }
+
 
 
     return (

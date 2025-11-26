@@ -199,8 +199,10 @@ const Proyecto2 = () => {
         if (line.includes("=")) {
           let [varName, expr] = line.split("=").map(s => s.trim())
           try {
-
-            valoresUsuario[varName] = Function(...Object.keys(valoresUsuario), `return ${expr}`)(...Object.values(valoresUsuario))
+            valoresUsuario[varName] = Function(
+              ...Object.keys(valoresUsuario),
+              `return ${expr}`
+            )(...Object.values(valoresUsuario))
           } catch {
             valoresUsuario[varName] = NaN
           }
@@ -209,31 +211,56 @@ const Proyecto2 = () => {
 
       const { x2, y2, z2 } = valoresUsuario
 
-      if (problema && problema.validacion({ x2, y2, z2 })) {
-        setResultado("correcto")
+      const esCorrecto = problema && problema.validacion({ x2, y2, z2 })
+
+      setResultado(esCorrecto ? "correcto" : "incorrecto")
+
+      if (esCorrecto) {
         setTimeout(() => {
           semaforosRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
           setMostrarAnimacion(true)
         }, 500)
       } else {
-        setResultado("incorrecto")
         setMostrarAnimacion(false)
       }
 
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
-      sendData("Proyecto2", (tiempo / 60).toFixed(2), nuevoIntento)
+
+      const matricula = typeof window !== "undefined"
+        ? localStorage.getItem("matricula")
+        : null
+
+      console.log("📌 Matricula enviada desde Proyecto2:", matricula)
+
+      if (!matricula) {
+        console.warn("⚠️ No se encontró matrícula en localStorage antes de sendData")
+      }
+      sendData("Proyecto2", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
 
     } catch (err) {
-      console.error(err)
+      console.error("❌ Error en validarValores:", err)
+
       setResultado("incorrecto")
       setMostrarAnimacion(false)
 
       const nuevoIntento = intentos + 1
       setIntentos(nuevoIntento)
-      sendData("Proyecto2", (tiempo / 60).toFixed(2), nuevoIntento)
+
+      const matricula = typeof window !== "undefined"
+        ? localStorage.getItem("matricula")
+        : null
+
+      console.log("📌 Matricula enviada desde Proyecto2 (catch):", matricula)
+
+      if (!matricula) {
+        console.warn("⚠️ No se encontró matrícula antes de sendData (catch)")
+      }
+
+      sendData("Proyecto2", (tiempo / 60).toFixed(2), nuevoIntento, matricula)
     }
   }
+
 
 
   return (
